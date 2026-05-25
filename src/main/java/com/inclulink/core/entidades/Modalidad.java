@@ -1,6 +1,7 @@
 package com.inclulink.core.entidades;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.io.Serializable;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "modalidad")
 public class Modalidad implements Serializable {
@@ -16,7 +18,7 @@ public class Modalidad implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nombre", nullable = false, length = 50)
+    @Column(name = "nombre", nullable = false, unique = true, length = 50)
     private String nombre;
 
     @OneToMany(mappedBy = "modalidad", cascade = CascadeType.ALL)

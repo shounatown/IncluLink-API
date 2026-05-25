@@ -1,6 +1,5 @@
 package com.inclulink.features.catalogo.service;
 
-import com.inclulink.core.entidades.*;
 import com.inclulink.features.catalogo.dto.CatalogoDTO;
 import com.inclulink.features.catalogo.dto.CatalogoDependienteDTO;
 

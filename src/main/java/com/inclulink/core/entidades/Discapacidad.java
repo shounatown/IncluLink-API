@@ -1,12 +1,17 @@
 package com.inclulink.core.entidades;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "discapacidad")
 public class Discapacidad implements Serializable {
@@ -15,11 +20,16 @@ public class Discapacidad implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nombre", nullable = false, length = 100)
+    @Column(name = "nombre", nullable = false, unique = true, length = 100)
     private String nombre;
+
+    @Column(name = "descripcion", columnDefinition = "TEXT")
+    private String descripcion;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tipo_discapacidad", nullable = false)
     private TipoDiscapacidad tipoDiscapacidad;
 
+    @OneToMany(mappedBy = "discapacidad", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CandidatoDiscapacidad> candidatosConDiscapacidad = new ArrayList<>();
 }

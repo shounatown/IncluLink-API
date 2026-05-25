@@ -4,15 +4,17 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tipo_habilidad")
-public class TipoHabilidad implements Serializable {
+@Table(name = "jornada")
+public class Jornada implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +23,6 @@ public class TipoHabilidad implements Serializable {
     @Column(name = "nombre", nullable = false, unique = true, length = 100)
     private String nombre;
 
-    @OneToMany(mappedBy = "tipoHabilidad", cascade = CascadeType.ALL)
-    private List<Habilidad> habilidades;
+    @OneToMany(mappedBy = "jornada", cascade = CascadeType.ALL)
+    private List<Vacante> vacantes = new ArrayList<>();
 }

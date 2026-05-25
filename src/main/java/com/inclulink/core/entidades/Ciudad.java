@@ -1,6 +1,7 @@
 package com.inclulink.core.entidades;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "ciudad")
 public class Ciudad implements Serializable{
@@ -29,6 +31,9 @@ public class Ciudad implements Serializable{
 
     @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL)
     private List<Vacante> vacantes;
+
+    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL)
+    private List<Candidato> candidatos;
 
 }
 
