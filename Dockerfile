@@ -1,31 +1,10 @@
-# Usamos una imagen base oficial de Ubuntu para tener el control total
-FROM ubuntu:24.04 AS build
-
-# Instalamos las herramientas necesarias: OpenJDK 24 y Maven
-RUN apt-get update && apt-get install -y \
-    openjdk-24-jdk \
-    maven \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copiamos el código del proyecto al contenedor
+# Etapa 1: Compilar la aplicación usando Maven y Java 21
+FROM maven:3.9.6-eclipse-temurin-21-jammy AS build
 COPY . .
-
-# Compilamos el archivo JAR saltándonos los tests
 RUN mvn clean package -DskipTests
 
-# --- Etapa de Ejecución (Imagen más ligera) ---
-FROM ubuntu:24.04
-
-# Instalamos solo el entorno de ejecución de Java 24 para que no pese tanto
-RUN apt-get update && apt-get install -y \
-    openjdk-24-jre \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copiamos el JAR generado en la etapa anterior
+# Etapa 2: Ejecutar la aplicación con una imagen ligera de Java 21
+FROM eclipse-temurin:21-jre-alpine
 COPY --from=build /target/*.jar app.jar
-
-# Exponemos el puerto de tu API
 EXPOSE 8081
-
-# Comando para arrancar IncluLink
 ENTRYPOINT ["java", "-jar", "/app.jar"]
