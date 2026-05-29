@@ -1,14 +1,16 @@
 package com.inclulink.core.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -17,6 +19,7 @@ public class Ciudad implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
 
     @Column(name="nombre", nullable = false, length = 100)
@@ -24,15 +27,16 @@ public class Ciudad implements Serializable{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_pais", nullable = false)
+    @JsonIgnoreProperties("pais")
     private Pais pais;
 
-    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "ciudad")
     private List<Empresa> empresas;
 
-    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "ciudad")
     private List<Vacante> vacantes;
 
-    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "ciudad")
     private List<Candidato> candidatos;
 
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family: 'CodecPro', system-ui, Arial, sans-serif; background-color: #f4f6f9; padding: 20px; margin: 0; color: #1a202c;">
+<div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); border: 1px solid #e2e8f0;">
+
+    <div style="background-color: #ffffff; padding: 35px; text-align: center; border-bottom: 4px solid #6fd513;">
+        <img src="https://res.cloudinary.com/inclulink/image/upload/q_auto/f_auto/v1779898692/IncluLinkLogo_jvbeyg.png" alt="IncluLink Logo" style="height: 55px; margin-bottom: 10px; display: inline-block;">
+        <h1 style="color: #1a202c; margin: 0; font-size: 26px; font-weight: 700; letter-spacing: 0.5px;">¡Bienvenido a IncluLink!</h1>
+        <p style="color: #519316; margin: 5px 0 0 0; font-size: 15px; font-weight: 600;">Alianza de Talento Inclusivo</p>
+    </div>
+
+    <div style="padding: 35px; line-height: 1.6;">
+        <h2 style="color: #1a202c; margin-top: 0; font-size: 20px;">Estimado equipo de <span th:text="${nombre}">Nombre de la Empresa</span>, </h2>
+        <p style="font-size: 16px; color: #4a5568;">
+            Es un placer darles la bienvenida a <strong>IncluLink</strong>. Al unirse a nuestra comunidad, su empresa da un paso firme hacia la construcción de espacios de trabajo diversos, equitativos y verdaderamente accesibles.
+        </p>
+
+        <p style="font-size: 15px; color: #1a202c; margin-top: 20px; font-weight: 600;">
+            ¿Qué pueden hacer desde su panel corporativo ahora mismo?
+        </p>
+        <ul style="font-size: 15px; color: #4a5568; padding-left: 20px; line-height: 1.8;">
+            <li>Publicar ofertas de empleo especificando las adecuaciones de accesibilidad física o digital disponibles.</li>
+            <li>Recibir postulaciones ordenadas y realizar un seguimiento transparente del proceso.</li>
+            <li>Conectar directamente con perfiles calificados que hacen match con su cultura laboral.</li>
+        </ul>
+
+        <div style="text-align: center; margin: 40px 0 10px 0;">
+            <a href="http://localhost:5173/dashboard/empresa" style="background-color: #6fd513; color: #ffffff; padding: 14px 32px; text-decoration: none; font-weight: 700; border-radius: 6px; display: inline-block; box-shadow: 0 4px 6px rgba(111, 213, 19, 0.3); border-bottom: 3px solid #519316;">
+                Publicar primera vacante
+            </a>
+        </div>
+    </div>
+
+    <div style="background-color: #f8fafc; padding: 25px; text-align: center; border-top: 1px solid #e2e8f0; font-size: 12px; color: #64748b;">
+        <p style="margin: 0 0 5px 0;">Este correo fue enviado de manera automática tras el registro en el sistema.</p>
+        <p style="margin: 0; color: #519316; font-weight: 600;"><strong>IncluLink — Conectando talento sin barreras</strong></p>
+    </div>
+</div>
+</body>
+</html>

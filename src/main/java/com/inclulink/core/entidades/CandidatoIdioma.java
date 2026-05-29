@@ -2,12 +2,13 @@ package com.inclulink.core.entidades;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -16,6 +17,7 @@ public class CandidatoIdioma implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -27,6 +29,6 @@ public class CandidatoIdioma implements Serializable {
     private Idioma idioma;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_nivel_habilidad", nullable = false)
-    private NivelHabilidad nivelIdioma;
+    @JoinColumn(name = "id_nivel_idioma", nullable = false)
+    private NivelIdioma nivelIdioma;
 }

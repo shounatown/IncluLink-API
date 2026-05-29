@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family: 'CodecPro', system-ui, Arial, sans-serif; background-color: #f4f6f9; padding: 20px; margin: 0; color: #1a202c;">
+<div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); border: 1px solid #e2e8f0;">
+
+    <div style="background-color: #ffffff; padding: 30px; text-align: center; border-bottom: 4px solid #6fd513;">
+        <img src="https://res.cloudinary.com/inclulink/image/upload/q_auto/f_auto/v1779898692/IncluLinkLogo_jvbeyg.png"  alt="IncluLink Logo" style="height: 45px; margin-bottom: 10px; display: inline-block;">
+        <h1 style="color: #1a202c; margin: 0; font-size: 24px; font-weight: 700;">¡Tu proceso avanza!</h1>
+    </div>
+
+    <div style="padding: 30px; line-height: 1.6;">
+        <h2 style="color: #1a202c; margin-top: 0; font-size: 20px;">¡Buenas noticias, <span th:text="${nombreCandidato}">Candidato</span>!</h2>
+        <p style="font-size: 16px; color: #4a5568;">
+            Tu postulación para la vacante <strong th:text="${tituloVacante}">Puesto</strong> ha avanzado de etapa en el proceso de selección.
+        </p>
+
+        <div style="text-align: center; margin: 30px 0;">
+                <span style="background-color: #f4fdf0; color: #519316; border: 2px solid #6fd513; padding: 10px 24px; font-size: 18px; font-weight: 700; border-radius: 30px; display: inline-block; text-transform: uppercase; letter-spacing: 0.5px;" th:text="${nuevoEstado}">
+                    ENTREVISTA
+                </span>
+        </div>
+
+        <p style="font-size: 15px; color: #4a5568;">
+            Mantente al tanto de tu tablero de IncluLink para verificar fechas, horarios o indicaciones complementarias expuestas por el reclutador.
+        </p>
+
+        <div style="text-align: center; margin: 35px 0 10px 0;">
+            <a href="http://localhost:5173/dashboard/postulaciones" style="background-color: #6fd513; color: #ffffff; padding: 12px 28px; text-decoration: none; font-weight: 700; border-radius: 6px; display: inline-block; box-shadow: 0 3px 6px rgba(111, 213, 19, 0.3); border-bottom: 3px solid #519316;">
+                Ver mis postulaciones
+            </a>
+        </div>
+    </div>
+
+    <div style="background-color: #f8fafc; padding: 20px; text-align: center; border-top: 1px solid #e2e8f0; font-size: 12px; color: #64748b;">
+        <p style="margin: 0; color: #519316; font-weight: 600;"><strong>IncluLink — Conectando talento sin barreras</strong></p>
+    </div>
+</div>
+</body>
+</html>

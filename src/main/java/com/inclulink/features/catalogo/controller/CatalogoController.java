@@ -1,7 +1,6 @@
 package com.inclulink.features.catalogo.controller;
 
-import com.inclulink.features.catalogo.dto.CatalogoDTO;
-import com.inclulink.features.catalogo.dto.CatalogoDependienteDTO;
+import com.inclulink.core.entidades.*;
 import com.inclulink.features.catalogo.service.CatalogoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -10,76 +9,133 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/catalogo")
-@RequiredArgsConstructor
+@RequestMapping("/api/v1/catalogos")
 @CrossOrigin(origins = "*")
+@RequiredArgsConstructor
 public class CatalogoController {
 
     private final CatalogoService catalogoService;
 
     @GetMapping("/paises")
     @ResponseStatus(HttpStatus.OK)
-    public List<CatalogoDTO> findAllPais() {
+    public List<Pais> getPaises() {
         return catalogoService.findAllPaises();
     }
 
-    @GetMapping("/modalidades")
+    @GetMapping("/ciudades")
     @ResponseStatus(HttpStatus.OK)
-    public List<CatalogoDTO> findAllModalidad() {
-        return catalogoService.findAllModalidades();
+    public List<Ciudad> getCiudades() {
+        return catalogoService.findAllCiudades();
     }
 
-    @GetMapping("/estados-vacante")
+    @GetMapping("/paises/{idPais}/ciudades")
     @ResponseStatus(HttpStatus.OK)
-    public List<CatalogoDTO> findAllEstadoVacante() {
-        return catalogoService.findAllEstadosVacante();
+    public List<Ciudad> getCiudadesPorPais(@PathVariable Long idPais) {
+        return catalogoService.findCiudadesPorPais(idPais);
     }
 
     @GetMapping("/sectores")
     @ResponseStatus(HttpStatus.OK)
-    public List<CatalogoDTO> findAllSector() {
+    public List<Sector> getSectores() {
         return catalogoService.findAllSectores();
     }
 
-    @GetMapping("/tipos-discapacidad")
+    @GetMapping("/accesibilidades")
     @ResponseStatus(HttpStatus.OK)
-    public List<CatalogoDTO> findAllTipoDiscapacidad() {
-        return catalogoService.findAllTiposDiscapacidad();
+    public List<Accesibilidad> getAccesibilidades() {
+        return catalogoService.findAllAccesibilidades();
     }
 
-    @GetMapping("/discapacidades")
+    @GetMapping("/estados-vacante")
     @ResponseStatus(HttpStatus.OK)
-    public List<CatalogoDTO> findAllDiscapacidad() {
-        return catalogoService.findAllDiscapacidades();
+    public List<EstadoVacante> getEstadosVacante() {
+        return catalogoService.findAllEstadosVacante();
     }
 
-    @GetMapping("/tipos-habilidad")
+    @GetMapping("/jornadas")
     @ResponseStatus(HttpStatus.OK)
-    public List<CatalogoDTO> findAllTipoHabilidad() {
-        return catalogoService.findAllTiposHabilidad();
+    public List<Jornada> getJornadas() {
+        return catalogoService.findAllJornadas();
+    }
+
+    @GetMapping("/modalidades")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Modalidad> getModalidades() {
+        return catalogoService.findAllModalidades();
+    }
+
+
+    @GetMapping("/niveles-estudios")
+    @ResponseStatus(HttpStatus.OK)
+    public List<NivelEstudios> getNivelesEstudios() {
+        return catalogoService.findAllNivelesEstudios();
+    }
+
+    @GetMapping("/idiomas")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Idioma> getIdiomas() {
+        return catalogoService.findAllIdiomas();
+    }
+
+    @GetMapping("/niveles-idioma")
+    @ResponseStatus(HttpStatus.OK)
+    public List<NivelIdioma> getNivelesIdioma() {
+        return catalogoService.findAllNivelesIdioma();
     }
 
     @GetMapping("/habilidades")
     @ResponseStatus(HttpStatus.OK)
-    public List<CatalogoDTO> findAllHabilidad() {
+    public List<Habilidad> getHabilidades() {
         return catalogoService.findAllHabilidades();
     }
 
-    @GetMapping("/paises/{paisId}/ciudades")
+    @GetMapping("/tipos-habilidad/{idTipoHabilidad}/habilidades")
     @ResponseStatus(HttpStatus.OK)
-    public List<CatalogoDependienteDTO> findCiudadByPais(@PathVariable Long paisId) {
-        return catalogoService.findCiudadByPais(paisId);
+    public List<Habilidad> getHabilidadesPorTipo(@PathVariable Long idTipoHabilidad) {
+        return catalogoService.findHabilidadesPorTipo(idTipoHabilidad);
     }
 
-    @GetMapping("/tipos-habilidad/{tipoId}/habilidades")
+    @GetMapping("/tipos-habilidad")
     @ResponseStatus(HttpStatus.OK)
-    public List<CatalogoDependienteDTO> findHabilidadByTipo(@PathVariable Long tipoId) {
-        return catalogoService.findHabilidadByTipo(tipoId);
+    public List<TipoHabilidad> getTiposHabilidad() {
+        return catalogoService.findAllTiposHabilidad();
     }
 
-    @GetMapping("/tipos-discapacidad/{tipoId}/discapacidades")
+    @GetMapping("/niveles-habilidad")
     @ResponseStatus(HttpStatus.OK)
-    public List<CatalogoDependienteDTO> findDiscapacidadByTipo(@PathVariable Long tipoId) {
-        return catalogoService.findDiscapacidadByTipo(tipoId);
+    public List<NivelHabilidad> getNivelesHabilidad() {
+        return catalogoService.findAllNivelesHabilidad();
+    }
+
+
+    @GetMapping("/discapacidades")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Discapacidad> getDiscapacidades() {
+        return catalogoService.findAllDiscapacidades();
+    }
+
+    @GetMapping("/tipos-discapacidad/{idTipoDiscapacidad}/discapacidades")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Discapacidad> getDiscapacidadesPorTipo(@PathVariable Long idTipoDiscapacidad) {
+        return catalogoService.findDiscapacidadesPorTipo(idTipoDiscapacidad);
+    }
+
+    @GetMapping("/tipos-discapacidad")
+    @ResponseStatus(HttpStatus.OK)
+    public List<TipoDiscapacidad> getTiposDiscapacidad() {
+        return catalogoService.findAllTiposDiscapacidad();
+    }
+
+    @GetMapping("/niveles-discapacidad")
+    @ResponseStatus(HttpStatus.OK)
+    public List<NivelDiscapacidad> getNivelesDiscapacidad() {
+        return catalogoService.findAllNivelesDiscapacidad();
+    }
+
+
+    @GetMapping("/estados-postulacion")
+    @ResponseStatus(HttpStatus.OK)
+    public List<EstadoPostulacion> getEstadosPostulacion() {
+        return catalogoService.findAllEstadosPostulacion();
     }
 }

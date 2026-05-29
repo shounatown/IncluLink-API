@@ -1,22 +1,32 @@
 package com.inclulink.features.catalogo.service;
 
-import com.inclulink.features.catalogo.dto.CatalogoDTO;
-import com.inclulink.features.catalogo.dto.CatalogoDependienteDTO;
-
+import com.inclulink.core.entidades.*;
 import java.util.List;
 
 public interface CatalogoService {
-    List<CatalogoDTO> findAllPaises();
-    List<CatalogoDTO> findAllModalidades();
-    List<CatalogoDTO> findAllEstadosVacante();
-    List<CatalogoDTO> findAllSectores();
-    List<CatalogoDTO> findAllTiposDiscapacidad();
-    List<CatalogoDTO> findAllTiposHabilidad();
-    List<CatalogoDTO> findAllDiscapacidades(); // Si lo manejas plano
-    List<CatalogoDTO> findAllHabilidades();     // Si lo manejas plano
 
-    // Catálogos Dependientes (Filtros)
-    List<CatalogoDependienteDTO> findCiudadByPais(Long paisId);
-    List<CatalogoDependienteDTO> findHabilidadByTipo(Long tipoId);
-    List<CatalogoDependienteDTO> findDiscapacidadByTipo(Long tipoId);
+    List<Pais> findAllPaises();
+    List<Ciudad> findAllCiudades();
+    List<Ciudad> findCiudadesPorPais(Long idPais);
+    List<Sector> findAllSectores();
+
+    List<Accesibilidad> findAllAccesibilidades();
+    List<EstadoVacante> findAllEstadosVacante();
+    List<Jornada> findAllJornadas();
+    List<Modalidad> findAllModalidades();
+
+    List<NivelEstudios> findAllNivelesEstudios();
+    List<Idioma> findAllIdiomas();
+    List<NivelIdioma> findAllNivelesIdioma();
+    List<Habilidad> findAllHabilidades();
+    List<Habilidad> findHabilidadesPorTipo(Long idTipoHabilidad);
+    List<TipoHabilidad> findAllTiposHabilidad();
+    List<NivelHabilidad> findAllNivelesHabilidad();
+
+    List<Discapacidad> findAllDiscapacidades();
+    List<Discapacidad> findDiscapacidadesPorTipo(Long idTipoDiscapacidad);
+    List<TipoDiscapacidad> findAllTiposDiscapacidad();
+    List<NivelDiscapacidad> findAllNivelesDiscapacidad();
+
+    List<EstadoPostulacion> findAllEstadosPostulacion();
 }

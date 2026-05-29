@@ -1,16 +1,16 @@
 package com.inclulink.core.entidades;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,6 +19,7 @@ public class Empresa implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
 
     @Column(name = "nombre", nullable = false, length = 200)
@@ -52,7 +53,10 @@ public class Empresa implements Serializable {
     private LocalDate fechaRegistro = LocalDate.now();
 
     @Column(name = "esta_activa", nullable = false)
-    private Boolean estaActiva = true;
+    private Boolean estaActiva = false;
+
+    @Column(name = "token_verificacion")
+    private String tokenVerificacion;
 
     @Column(name = "es_verificada", nullable = false)
     private Boolean esVerificada = false;

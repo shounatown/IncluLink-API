@@ -1,15 +1,17 @@
 package com.inclulink.core.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -18,6 +20,7 @@ public class Candidato implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
 
     @Column(name = "nombre", nullable = false, length = 150)
@@ -60,7 +63,10 @@ public class Candidato implements Serializable {
     private LocalDate fechaRegistro = LocalDate.now();
 
     @Column(name = "esta_activo", nullable = false)
-    private Boolean estaActivo = true;
+    private Boolean estaActivo = false;
+
+    @Column(name = "token_verificacion")
+    private String tokenVerificacion;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_ciudad")
@@ -77,8 +83,6 @@ public class Candidato implements Serializable {
 
     @OneToMany(mappedBy = "candidato", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CandidatoIdioma> idiomas = new ArrayList<>();
-
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_nivel_estudios")

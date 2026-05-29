@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family: 'CodecPro', system-ui, Arial, sans-serif; background-color: #f4f6f9; padding: 20px; margin: 0; color: #1a202c;">
+<div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); border: 1px solid #e2e8f0;">
+
+    <div style="background-color: #ffffff; padding: 30px; text-align: center; border-bottom: 4px solid #519316;">
+        <img src="https://res.cloudinary.com/inclulink/image/upload/q_auto/f_auto/v1779898692/IncluLinkLogo_jvbeyg.png" alt="IncluLink Logo" style="height: 45px; margin-bottom: 10px; display: inline-block;">
+        <h1 style="color: #1a202c; margin: 0; font-size: 24px; font-weight: 700;">Nueva Postulación Recibida</h1>
+    </div>
+
+    <div style="padding: 30px; line-height: 1.6;">
+        <h2 style="color: #1a202c; margin-top: 0; font-size: 20px;">¡Hola, equipo de Selección! </h2>
+        <p style="font-size: 16px; color: #4a5568;">
+            Un nuevo talento ha aplicado a una de sus ofertas activas en la plataforma. Aquí un breve resumen del perfil:
+        </p>
+
+        <div style="background-color: #fafdf0; border: 1px solid #edf2ce; padding: 20px; margin: 25px 0; border-radius: 8px; border-left: 5px solid #dee21a;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 15px;">
+                <tr>
+                    <td style="padding: 6px 0; font-weight: 700; width: 35%; color: #1a202c;">Vacante:</td>
+                    <td style="padding: 6px 0; color: #519316; font-weight: 600;" th:text="${tituloVacante}">Desarrollador Web</td>
+                </tr>
+                <tr>
+                    <td style="padding: 6px 0; font-weight: 700; color: #1a202c;">Candidato:</td>
+                    <td style="padding: 6px 0; color: #4a5568;" th:text="${nombreCandidato}">Juan Pérez</td>
+                </tr>
+            </table>
+        </div>
+
+        <p style="font-size: 15px; color: #4a5568;">
+            Pueden revisar sus habilidades, experiencia y requerimientos de accesibilidad directamente desde su panel administrativo para continuar con las etapas de selección.
+        </p>
+
+        <div style="text-align: center; margin: 35px 0 20px 0;">
+            <a href="http://localhost:5173/dashboard/empresa/postulaciones" style="background-color: #519316; color: #ffffff; padding: 12px 28px; text-decoration: none; font-weight: 700; border-radius: 6px; display: inline-block; box-shadow: 0 3px 6px rgba(81, 147, 22, 0.3);">
+                Evaluar candidatura
+            </a>
+        </div>
+    </div>
+
+    <div style="background-color: #f8fafc; padding: 20px; text-align: center; border-top: 1px solid #e2e8f0; font-size: 12px; color: #64748b;">
+        <p style="margin: 0; color: #519316; font-weight: 600;"><strong>IncluLink — Conectando talento sin barreras</strong></p>
+    </div>
+</div>
+</body>
+</html>
